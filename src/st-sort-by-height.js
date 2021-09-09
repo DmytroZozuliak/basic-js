@@ -11,7 +11,18 @@ import { NotImplementedError } from '../extensions/index.js';
  *
  * The result should be [-1, 150, 160, 170, -1, -1, 180, 190]
  */
-export default function sortByHeight(/* arr */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+export default function sortByHeight(arr) {
+  let ind = [];
+  arr.forEach((e, i) => {
+    if (e === -1) {
+      ind.push(i);
+    }
+  });
+  let filtered = arr.filter(e => e !== -1).sort((a, b) => a - b);
+
+  for (let i = 0; i < ind.length; i++) {
+    filtered.splice(ind[i], 0, -1);
+  }
+
+  return filtered;
 }
