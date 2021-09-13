@@ -39,14 +39,13 @@ export default class VigenereCipheringMachine {
     //  console.log(key);
 
     let result = [];
-    let count = 0;
 
     for (let i = 0; i < text.length; i++) {
       console.log(text[i]);
       if (!abc.includes(text[i])) {
         result.push(text[i]);
       } else {
-        let sum = abc.indexOf(text[i]) + abc.indexOf(key[count]);
+        let sum = abc.indexOf(text[i]) + abc.indexOf(key[i]);
         console.log(sum);
         let finIndex = -1;
 
@@ -57,8 +56,6 @@ export default class VigenereCipheringMachine {
         }
 
         result.push(abc[finIndex]);
-
-        count++;
       }
     }
 
@@ -81,14 +78,13 @@ export default class VigenereCipheringMachine {
     let abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
     let result = [];
-    let count = 0;
 
     for (let i = 0; i < text.length; i++) {
       if (!abc.includes(text[i])) {
         result.push(text[i]);
       } else {
         let textIndx = abc.indexOf(text[i]);
-        let keyInd = abc.indexOf(key[count]);
+        let keyInd = abc.indexOf(key[i]);
         let finIndex;
 
         if (1 + (textIndx > keyInd)) {
@@ -102,8 +98,6 @@ export default class VigenereCipheringMachine {
         }
 
         result.push(abc[finIndex]);
-
-        count++;
       }
     }
 
