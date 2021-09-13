@@ -23,7 +23,67 @@ import { NotImplementedError } from '../extensions/index.js';
  *  [1, 1, 1]
  * ]
  */
-export default function minesweeper (/* matrix */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+export default function minesweeper(matrix) {
+  let nMatrix = [];
+
+  for (let i = 0; i < matrix.length; i++) {
+    nMatrix[i] = matrix[i].slice();
+  }
+
+  for (let i = 0; i < matrix.length; i++) {
+    let matrixRow = matrix[i];
+
+    for (let k = 0; k < matrixRow.length; k++) {
+      let element = matrixRow[k];
+
+      nMatrix[i][k] = 0;
+
+      if (element === false) {
+        if (matrix[i][k - 1] !== undefined && matrix[i][k - 1] === true) {
+          ++nMatrix[i][k];
+        }
+        if (matrix[i][k + 1] !== undefined && matrix[i][k + 1] === true) {
+          ++nMatrix[i][k];
+        }
+        if (i - 1 >= 0) {
+          if (matrix[i - 1][k] === true) {
+            ++nMatrix[i][k];
+          }
+          if (
+            matrix[i - 1][k - 1] !== undefined &&
+            matrix[i - 1][k - 1] === true
+          ) {
+            ++nMatrix[i][k];
+          }
+          if (
+            matrix[i - 1][k + 1] !== undefined &&
+            matrix[i - 1][k + 1] === true
+          ) {
+            ++nMatrix[i][k];
+          }
+        }
+        if (i + 1 < matrix.length) {
+          if (matrix[i + 1][k] === true) {
+            ++nMatrix[i][k];
+          }
+          if (
+            matrix[i + 1][k - 1] !== undefined &&
+            matrix[i + 1][k - 1] === true
+          ) {
+            ++nMatrix[i][k];
+          }
+          if (
+            matrix[i + 1][k + 1] !== undefined &&
+            matrix[i + 1][k + 1] === true
+          ) {
+            ++nMatrix[i][k];
+          }
+        }
+      } else {
+        nMatrix[i][k] = 1;
+      }
+    }
+  }
+
+  return nMatrix;
 }
