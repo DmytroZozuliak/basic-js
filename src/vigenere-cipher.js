@@ -59,7 +59,6 @@ export default class VigenereCipheringMachine {
         result.push(abc[finIndex]);
 
         count++;
-        if (count === key.length) count = 0;
       }
     }
 
@@ -105,7 +104,6 @@ export default class VigenereCipheringMachine {
         result.push(abc[finIndex]);
 
         count++;
-        if (count === key.length) count = 0;
       }
     }
 
